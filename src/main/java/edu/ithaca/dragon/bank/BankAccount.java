@@ -9,6 +9,11 @@ public class BankAccount {
      *
      */
     public BankAccount(String email, double startingBalance){
+        //Check for invalid startingBalance
+        if (isAmountValid(startingBalance) == false){
+            throw new IllegalArgumentException("Starting balance: " + startingBalance + " is invalid, cannot create account");
+        }
+
         if (isEmailValid(email)){
             this.email = email;
             this.balance = startingBalance;
