@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
+
 class BankAccountTest {
 
     @Test
@@ -23,8 +25,23 @@ class BankAccountTest {
 
     @Test
     void isEmailValidTest(){
+        //Email cannot be empty
+        assertFalse(BankAccount.isEmailValid(""));
+        //Should fail because address cannot have whitespace
+        assertFalse(BankAccount.isEmailValid("te st@test.com"));
+        //Should fail because address must have an '@' symbol
+        assertFalse(BankAccount.isEmailValid("testtest.com"));
+        //Should fail because there must be a domain at the end
+        assertFalse(BankAccount.isEmailValid("test@.com"));
+        //Should fail because there must be characters before the '@'
+        assertFalse(BankAccount.isEmailValid("@test.com"));
+        //Should fail because there must be a '.' right of the '@'
+        assertFalse(BankAccount.isEmailValid("test@test"));
+        //Should fail because there must be at least 2 characters after the '.'
+        assertFalse(BankAccount.isEmailValid("test@test.a"));
+
+        //Valid email address, should pass
         assertTrue(BankAccount.isEmailValid( "a@b.com"));
-        assertFalse( BankAccount.isEmailValid(""));
     }
 
     @Test
