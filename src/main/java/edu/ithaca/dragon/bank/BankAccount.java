@@ -18,6 +18,28 @@ public class BankAccount {
         }
     }
 
+    /**
+     *
+     * @param amountToCheck
+     * Given amount must meet following requirements to be valid:
+     * Given amount must not have more than 2 decimal places
+     * Given amount must be a positive number
+     * @return true if dollar amount is valid, otherwise false
+     */
+
+    public static boolean isAmountValid(double amountToCheck){
+        //Negatives not allowed
+        if (amountToCheck < 0){
+            return false;
+        }
+        //No more than 2 decimals
+        String givenAmount = amountToCheck + "";
+        if ((givenAmount.length() - givenAmount.lastIndexOf('.')) > 3){
+            return false;
+        }
+        return true;
+    }
+
     public double getBalance(){
         return balance;
     }
