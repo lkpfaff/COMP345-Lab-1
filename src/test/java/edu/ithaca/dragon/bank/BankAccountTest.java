@@ -17,10 +17,21 @@ class BankAccountTest {
 
     @Test
     void withdrawTest() {
+        //New account for testing
         BankAccount bankAccount = new BankAccount("a@b.com", 200);
-        bankAccount.withdraw(100);
 
-        assertEquals(100, bankAccount.getBalance());
+        //Balance should not change if amount is negative
+        bankAccount.withdraw(-50);
+        assertEquals(200, bankAccount.getBalance());
+
+        //Balance should not change if given amount is large than current balance
+        bankAccount.withdraw(250);
+        assertEquals(200, bankAccount.getBalance());
+
+        //Balance should be reduced by 50
+        bankAccount.withdraw(50);
+        assertEquals(150, bankAccount.getBalance());
+
     }
 
     @Test
