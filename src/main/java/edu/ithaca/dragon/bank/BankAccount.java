@@ -27,10 +27,20 @@ public class BankAccount {
     }
 
     /**
+     * @param amount the amount to be withdrawn from the account
+     *
+     * Does nothing if the given amount is a negative number
+     * Does nothing if the given amount is larger than the current account balance
      * @post reduces the balance by amount if amount is non-negative and smaller than balance
      */
     public void withdraw (double amount)  {
-        balance -= amount;
+        //Negatives not allowed
+        if (amount > 0){
+            //Must be smaller than balance
+            if (amount < this.balance){
+                this.balance-=amount;
+            }
+        }
 
     }
 
