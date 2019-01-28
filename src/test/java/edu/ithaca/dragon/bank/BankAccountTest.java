@@ -9,6 +9,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class BankAccountTest {
 
     @Test
+    void isAmountValidTest(){
+        //Should return false if given amount is negative
+        assertFalse(BankAccount.isAmountValid(-1));
+
+        //Should return false if given amount has more than 2 decimal places
+        assertFalse(BankAccount.isAmountValid(12.983));
+
+        //Valid amount should return true
+        assertTrue(BankAccount.isAmountValid(100.01));
+    }
+
+    @Test
     void getBalanceTest() {
         BankAccount bankAccount = new BankAccount("a@b.com", 200);
 
