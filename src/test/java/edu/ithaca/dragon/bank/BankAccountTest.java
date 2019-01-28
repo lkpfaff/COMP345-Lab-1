@@ -73,7 +73,13 @@ class BankAccountTest {
 
         assertEquals("a@b.com", bankAccount.getEmail());
         assertEquals(200, bankAccount.getBalance());
-        //check for exception thrown correctly
+        //Throw exception for negative balance
+        assertThrows(IllegalArgumentException.class, ()-> new BankAccount("a@a.com", -50));
+
+        //Throw exception for balance with more than 2 decimals
+        assertThrows(IllegalArgumentException.class, ()-> new BankAccount("a@a.com", 50.056));
+
+        //Throw exception for invalid email address
         assertThrows(IllegalArgumentException.class, ()-> new BankAccount("", 100));
     }
 
